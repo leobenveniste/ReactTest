@@ -2,12 +2,264 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --gray: #F2F2F2;
+  --blue: #497AC4;
+}
+html, body {
+  font-size: 1em;
+}
+
 html, body, #root {
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
+  overflow: hidden;
   font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  line-height: 1;
+  position: relative;
+  scroll-behavior: smooth;
+}
+#listContainer {
+  scroll-behavior: smooth;
+}
+
+#root {
+  /* background-color: #161923; */
+  background: linear-gradient(#B893F3, #F56566);
+  color: white;
+}
+
+header img {
+  height: auto;
+  max-height: 100px;
+  cursor: pointer;
+}
+
+h1 {
+  font-size: 3em;
+}
+h2 {
+  font-size: 1.25em;
+  font-weight: 200;
+}
+
+p, span {
+  font-size: 1.2em;
+  font-weight: 400;
+}
+
+.button {
+  padding: 0.5rem 1rem 0.5rem 0.5rem;
+  border-radius: 0.4rem;
+  transition: all 150ms ease-in-out;
+}
+
+.button:hover {
+  background-color: rgba(255,255,255, 0.5);
+  outline: 2px solid white;
+  color: black;
+}
+.button path{
+  fill: white;
+  transition: all 150ms ease-in-out;
+}
+.button:hover path{
+  fill: black;
+}
+
+.surprise {
+  background-color: var(--gray);
+  color: var(--blue);
+}
+.surprise path {
+  fill: var(--blue);
+}
+
+.pokedexContainer {
+  position: relative;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: fit-content;
+  margin: 0 auto;
+}
+
+.pokedexContainer .pokemon {
+  position: absolute;
+  left: 25%;
+  top: 28%;
+  height: 32%;
+}
+
+.itemImage {
+  border-radius: 1.5rem;
+}
+
+.inputContainer {
+  background-color: rgba(255,255,255, 0.2);
+  padding: 0.5em 0.75em;
+  border-radius: 0.5em;
+  transition: all 150ms ease-in-out;
+}
+input {
+  background-color: transparent;
+  color: white;
+  font-size: 1.2em;
+  outline: 0;
+  border: 0;
+}
+input::placeholder {
+  color: white;
+  opacity: 0.5;
+}
+.inputContainer:hover, .inputContainer:focus-within {
+  outline: 4px solid white;
+  background-color: rgba(255,255,255, 0.5);
+  color: black;
+}
+
+.listBtn {
+  border-radius: 0.5em;
+  padding: 1em 0.75em;
+  transition: all 150ms ease-in-out;
+}
+.listBtn .imgContainer {
+  background-color: var(--gray);
+  border-radius: 100%;
+  padding: 1em;
+  border: 4px solid white;
+  transition: all 150ms ease-in-out;
+}
+
+.listBtn:hover .imgContainer {
+  background-color: #FFFFFF;
+  border: 4px solid var(--blue);
+}
+.listBtn img {
+  transition: all 150ms ease-in-out;
+}
+.listBtn:hover img {
+  transform: scale(1.25); 
+}
+
+.listBtn span {
+  text-align: center;
+}
+
+.iconBtn {
+  border-radius: 50%;
+  transition: all 150ms ease-in-out;
+}
+.iconBtn:hover {
+  opacity: 0.5;
+  transform: scale(1.2);
+}
+
+.typeBtn {
+  padding: 0.2em;
+  border-radius: 50%;
+}
+.typeBtn.selected {
+  background-color: #fff;
+}
+.typeBtn:hover {
+  background-color: #ffffffdd;
+}
+
+.itemBkg{
+  background-position: center;
+  background-size: cover;
+  opacity: 0.2;
+  width: 100%;
+  height: 100%;
+}
+
+footer {
+  background-color: #282828;
+}
+
+/* PAGE */
+.page {
+  position: absolute;
+  width: 100%;
+  height:100%;
+}
+.page-enter {
+  opacity:0;
+}
+
+.page-enter-active {
+  opacity: 1;
+  transition: opacity 500ms;
+}
+
+.page-exit {
+  opacity: 1;
+}
+
+.page-exit-active {
+  opacity: 0;
+  transition: opacity 500ms;
+}
+
+
+/* LOADER */
+.lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ellipsis div {
+  position: absolute;
+  top: 33px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #fff;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+  left: 8px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+  left: 8px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+  left: 32px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+  left: 56px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(24px, 0);
+  }
 }
